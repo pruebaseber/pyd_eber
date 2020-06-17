@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "354946893431",
+    "firebase_url": "https://proyecto-pyd-eber.firebaseio.com",
+    "project_id": "proyecto-pyd-eber",
+    "storage_bucket": "proyecto-pyd-eber.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354946893431:android:1961306bf26b1f6dece872",
+        "android_client_info": {
+          "package_name": "com.alsedev.pydeber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354946893431-primoe88lpqefo7hr44i52as507u1hsc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtxmRY6Jr7L7b1kn2LJ00DGJqlfOBgKuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354946893431-primoe88lpqefo7hr44i52as507u1hsc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,118 @@
+name: pyd_eber
+description: La 2000 Pedidos y Domicilios
+
+publish_to: 'none'
+
+version: 1.0.1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Versiones al 29 de abril de 2020
+  # https://firebaseopensource.com/projects/firebaseextended/flutterfire/
+  firebase_core: ^0.4.5
+  firebase_analytics: ^5.0.14
+  firebase_auth: ^0.16.1
+  firebase_database: ^3.1.6
+  firebase_storage: ^3.1.6
+
+  cupertino_icons: ^0.1.3
+
+  # Internacionalizacion   # Versiones al 29 de abril de 2020
+  intl: ^0.16.1
+  intl_translation: ^0.17.10
+
+  # Dispositivos y Seguridad para Usuarios
+  device_info: ^0.4.2+4
+
+  # Agregados y usados por Eber
+  theme_provider: ^0.3.3
+  flutter_custom_clippers: ^1.1.0
+  url_launcher: ^5.4.5
+  carousel_slider: ^1.4.1
+  image_picker: ^0.6.7+1
+  shadow_text: ^0.0.2
+
+  # BLoC pattern
+  bloc: ^4.0.0
+  flutter_bloc: ^4.0.0
+  equatable: ^1.2.0
+  rxdart: ^0.23.1
+
+  path_provider: ^1.4.4
+  network_to_file_image: ^2.3.1
+
+  flutter_slidable: ^0.5.4
+  toast: ^0.1.5
+
+  # Paquetes de AlseDev al 29 de abril de 2020
+  # Configuración copiada del proyecto eoemovil.  Ver dependency_overrides
+  appres: any
+  appadmin: any
+  appsesionfb: any
+  appiniciarsesion: any
+  appdartapi: any
+
+dependency_overrides:
+  appres:
+    path: ../../../apppacks/appres/
+  appadmin:
+    path: ../../../apppacks/appadmin/
+  appsesionfb:
+    path: ../../../apppacks/appsesionfb/
+  appiniciarsesion:
+    path: ../../../apppacks/appiniciarsesion/
+  appdartapi:
+    path: ../../../apppacks/appdartapi/
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.7.5
+  flutter_native_splash: ^0.1.9
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo_la_2000_fondo_blanco.jpg"
+# flutter pub run flutter_launcher_icons:main
+# flutter pub run flutter_launcher_icons:main -f <your config file name here>
+
+flutter_native_splash:
+  image: assets/images/fondo.png
+  color: "1B4A99"
+#  android_disable_fullscreen: true
+#  fill: true
+#  android: false
+#  ios: false
+
+# flutter pub pub run flutter_native_splash:create
+
+flutter:
+
+  fonts:
+    - family: Angelina
+      fonts:
+        - asset: assets/fonts/angelina.ttf
+    - family: Swiss721
+      fonts:
+        - asset: assets/fonts/swz721kr.ttf
+    - family: Express
+      fonts:
+        - asset: assets/fonts/exprdgs.ttf
+    - family: Porkys
+      fonts:
+        - asset: assets/fonts/porkh.ttf
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/logo_la_2000.png
+    - assets/images/fondo.png
+    - assets/images/logo_la_2000_fondo_blanco.jpg
+    - assets/images/launch_image.png
+    - assets/images/icono_la_2000.png
