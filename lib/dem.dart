@@ -22,8 +22,8 @@ class DEM {
 
 //  static String urlImagenesWebProductos = 'productos/';
   static List<String> internalLog = [];
-  static String uSenior = 'senior.apps.senior@gmail.com';
-  static String pSenior = 'senior';
+  static String uSenior = 'eberaplicaciones@gmail.com';
+  static String pSenior = 'TruVenEber.2020';
 
   static InfoDispositivo infoDispositivo;
 

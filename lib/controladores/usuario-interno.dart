@@ -1,8 +1,8 @@
 import 'package:pyd_eber/all-exports.dart';
 
 class UsuarioInternoControlador {
-  static const usuarioInterno = 'pruebas.appuno1@gmail.com';
-  static const claveInterna = '12345678';
+  static const usuarioInterno = 'eberaplicaciones@gmail.com';
+  static const claveInterna = 'TruVenEber.2020';
   static PlatformException platformException;
 
   static esperar(int milisecs) {

@@ -1,4 +1,4 @@
-package com.example.pyd_eber
+package com.alsedev.pydeber
 
 import io.flutter.embedding.android.FlutterActivity
 
