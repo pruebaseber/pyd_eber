@@ -29,7 +29,7 @@ class _UITesterState extends State<UITester> {
     //
     if (!lIniciado) {
       Timer(Duration(milliseconds: 200), () {
-        iniciar();
+       // iniciar();
       });
     }
 
@@ -66,19 +66,26 @@ class _UITesterState extends State<UITester> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-//            BotonBorrarDatosDelfinRealtime(),
-              RaisedButton(
-                color: AppRes.appResMap[Co.COLOR_6],
-                textColor: Colors.white,
-                onPressed: iniciar,
-                child: Container(
-                  width: Responsive.anchoContenido * .8,
-                  child: Text('Iniciar',
-                      style: AppRes.appResMap[Co.ESTILO_TEXTO_BOTON_PRINCIPAL],
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+              //UIBotonPyD(),
+              UIBoton(
+                'Pantallas',
+                  () {
+                    Navigator.pushNamed(context, UIMisDatos.ruta);
+                  },
               ),
+//            BotonBorrarDatosDelfinRealtime(),
+//              RaisedButton(
+//                color: AppRes.appResMap[Co.COLOR_6],
+//                textColor: Colors.white,
+//                onPressed: iniciar,
+//                child: Container(
+//                  width: Responsive.anchoContenido * .8,
+//                  child: Text('Iniciar',
+//                      style: AppRes.appResMap[Co.ESTILO_TEXTO_BOTON_PRINCIPAL],
+//                    textAlign: TextAlign.center,
+//                  ),
+//                ),
+//              ),
             ],
           ),
         ),

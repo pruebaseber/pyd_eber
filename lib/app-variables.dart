@@ -268,6 +268,12 @@ class AppVariables {
           passwordConfirm: 'password',
           savePassword: false,
           saveUser: false),
+      Authentication(name: 'Pruebas ALSE DEV Eber',
+          email: 'eberaplicaciones@gmail.com',
+          password: 'TruVenEber.2020',
+          passwordConfirm: 'TruVenEber.2020',
+          savePassword: false,
+          saveUser: false),
     ];
 
   }
