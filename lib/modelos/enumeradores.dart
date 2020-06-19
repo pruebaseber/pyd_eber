@@ -134,3 +134,34 @@ Map<String, NivelUsuario> nivelUsuario2Map() {
 }
 
 //------------------------------------------------------------------------------
+
+enum TipIdentificacion {CedulaCiudadania, CedulaExtranjeria, Pasaporte, TarjetaIdentidad, CedulaVenezolana, PermisoEspecialPermanencia, RegistroCivil}
+
+String tipIdentificacion2String(e) {
+  String retorno = describeEnum(e);
+  retorno = retorno.split(new RegExp(r"(?<=[a-z])(?=[A-Z])")).join(' ');
+  return describeEnum(e);
+}
+
+
+TipIdentificacion string2TipIdentificacion(String s) {
+  s = s.replaceAll(' ', '');
+  TipIdentificacion e = TipIdentificacion.values.firstWhere((v) => describeEnum(v) == s);
+  return e;
+}
+
+List<String> tipIdentificacion2List() {
+  List<String> lista = List<String>();
+  TipIdentificacion.values.forEach((n) {
+    lista.add(describeEnum(n));
+  });
+  return lista;
+}
+
+Map<String, TipIdentificacion> tipIdentificacion2Map() {
+  Map<String, TipIdentificacion> mapa = Map<String, TipIdentificacion>();
+  TipIdentificacion.values.forEach((n) {
+    mapa.putIfAbsent(describeEnum(n), () => n);
+  });
+  return mapa;
+}
