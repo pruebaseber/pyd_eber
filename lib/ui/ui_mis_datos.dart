@@ -53,7 +53,6 @@ class _EstadoClientesEdicion extends State<UIMisDatos> {
   Widget build(BuildContext context) {
     DEM.mapaCliente = widget.registro.toMap();
     //DEM.calcularResponsive(context);
-
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.transparent,
@@ -124,8 +123,9 @@ class _EstadoClientesEdicion extends State<UIMisDatos> {
                         mostrarEtiqueta: true,
                         child: DropdownButton<String>(
                           isDense: true,
-                          // value: nivelUsuario2String(widget.usuario.nivelUsuario),
+                          //value: nivelUsuario2String(widget.usuario.nivelUsuario),
                           onChanged: (String newValue) {
+                            print(newValue); // el valor que escoje
                             setState(() {
                               // widget.usuario.nivelUsuario = string2NivelUsuario(newValue);
                             });
@@ -246,17 +246,17 @@ class _EstadoClientesEdicion extends State<UIMisDatos> {
   }
 }
 
-
-class Fondo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: Responsive.alto,
-      width: Responsive.ancho,
-      child: Image.asset(
-        'images/fondo_agua_la2000.png',
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-}
+//
+//class Fondo extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Container(
+//      height: Responsive.alto,
+//      width: Responsive.ancho,
+//      child: Image.asset(
+//        'images/fondo_agua_la2000.png',
+//        fit: BoxFit.cover,
+//      ),
+//    );
+//  }
+//}

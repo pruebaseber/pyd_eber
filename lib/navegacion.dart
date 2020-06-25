@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pyd_eber/all-exports.dart';
+import 'package:pyd_eber/ui/ui_publicidades.dart';
 import 'ui/_ui.dart';
 
 class FadePage extends PageRouteBuilder {
@@ -33,6 +34,8 @@ class Navegacion {
         return FadePage(UIProductos());
       case UIPedido.ruta:
         return FadePage(UIPedido());
+      case UIPublicidades.ruta:
+        return FadePage(UIPublicidades());
       case UIMisDatos.ruta:
         return FadePage(UIMisDatos(registro: Cliente(
             numeroIdent: '11711897',

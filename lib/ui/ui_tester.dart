@@ -1,5 +1,8 @@
 import 'package:pyd_eber/all-exports.dart';
-import 'package:pyd_eber/internos/boton-borrar-datos-delfin-realtime.dart';
+import 'package:pyd_eber/modelos/publicidades.dart';
+import 'package:pyd_eber/ui/ui_boton_pyd.dart';
+import 'package:pyd_eber/ui/ui_modo.dart';
+import 'package:pyd_eber/ui/ui_publicidades.dart';
 
 class UITester extends StatefulWidget {
   @override
@@ -23,73 +26,90 @@ class _UITesterState extends State<UITester> {
   }
 
   @override
+  void initState() {
+    // TODO: Iniciar sesión de Usuario Interno para pruebas
+//    FirebaseAuth.instance.signInWithEmailAndPassword(email: 'xxx@gmail.com', password: '123455');
+    //PromocionesFB.init();
+    PublicidadesFB.init();
+
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     //
     Responsive.calcularResponsive(context);
     //
     if (!lIniciado) {
       Timer(Duration(milliseconds: 200), () {
-       // iniciar();
+//        iniciar();
       });
     }
 
-    return Stack(
-      children: [
-        Container(
-          width: CD.ancho,
-          height: CD.alto,
-          child: Image.asset(
-            FONDO,
-            fit: BoxFit.fitHeight,
-          ),
-        ),
-        Container(
-          width: CD.ancho,
-          height: CD.alto,
-          child: Center(
-            child: Container(
-              width: 250,
-              height: 250,
-              child: Image.asset(
-                LOGO,
-                fit: BoxFit.fitHeight,
-              ),
-            ),
-          ),
-        ),
-        Container(
-          width: 200,
-          margin:
-              EdgeInsets.only(left: (CD.ancho - 200) / 2, top: CD.alto * .75),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              //UIBotonPyD(),
-              UIBoton(
-                'Pantallas',
-                  () {
-                    Navigator.pushNamed(context, UIMisDatos.ruta);
-                  },
-              ),
-//            BotonBorrarDatosDelfinRealtime(),
-//              RaisedButton(
-//                color: AppRes.appResMap[Co.COLOR_6],
-//                textColor: Colors.white,
-//                onPressed: iniciar,
-//                child: Container(
-//                  width: Responsive.anchoContenido * .8,
-//                  child: Text('Iniciar',
-//                      style: AppRes.appResMap[Co.ESTILO_TEXTO_BOTON_PRINCIPAL],
-//                    textAlign: TextAlign.center,
-//                  ),
-//                ),
-//              ),
-            ],
-          ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<UsuarioInternoBloc>(
+          create: (context) =>
+          UsuarioInternoBloc()..add(UsuarioInternoInicalizado()),
         ),
       ],
+      child: Stack(
+        children: [
+          UIFondo(
+            lFullScreen: true,
+          ),
+//          Center(
+//            child: UILogo(alto: 250, ancho: 250),
+//          ),
+//        UIInicioPublicidad(),
+          Container(
+            width: CD.ancho,
+            margin: EdgeInsets.only(top: CD.alto * .6),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+//              UIBotonPyD('Iniciar', iniciar),
+                UIMensajeInicioDeUsuarioInterno(),
+//                UIBotonPyD(
+//                  'Usuarios',
+//                      () {
+//                    Navigator.pushNamed(context, UIUsuariosFire.ruta);
+//                  },
+//                ),
+                UIBotonPyD(
+                  'Publicidad',
+                      () {
+                    Navigator.pushNamed(context, UIPublicidades.ruta);
+                  },
+                ),
+//                UIBotonPyD(
+//                  'Promociones',
+//                      () {
+//                    Navigator.pushNamed(context, UIPromociones.ruta);
+//                  },
+//                ),
+//              UIBotonPyD(
+//                'Clientes',
+//                () {
+//                  Navigator.pushNamed(context, UIClientes.ruta);
+//                },
+//              ),
+//              UIBotonPyD(
+//                'Mis Datos',
+//                    () {
+//                  Navigator.pushNamed(context, UIMisDatos.ruta);
+//                },
+//              ),
+//              UIBotonPyD('Editor Imagen', () {
+//                Navigator.pushNamed(context, UIEditorImagenes.ruta);
+//              }),
+              ],
+            ),
+          ),
+          UIModo(),
+        ],
+      ),
     );
   }
 }

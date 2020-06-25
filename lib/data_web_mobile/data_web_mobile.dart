@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 
-List dataWebMobile(BuildContext context, AsyncSnapshot snap) {
-  List items;
+//List dataWebMobile(BuildContext context, AsyncSnapshot snap) {
+List dataWebMobile(AsyncSnapshot snap) {
+List items;
   if (snap.hasData && !snap.hasError && snap.data.snapshot != null) {
     items = [];
 

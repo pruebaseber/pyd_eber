@@ -275,7 +275,9 @@ class AppVariables {
           savePassword: false,
           saveUser: false),
     ];
-
+    // Mensajes de campos nulos
+    AppRes.appResMap[Co.MENSAJE_FECHA_NULA] = '<Fecha no definida>';
+    AppRes.appResMap[Co.MENSAJE_HORA_NULA] = '<Hora no definida>';
   }
 }
 //color: AppRes.appResMap[Co.DECORACION_BOTON_PRINCIPAL] != null ? null : funcion == null ? Colors.grey : AppRes.appResMap[Co.COLOR_FONDO_BOTON_PRINCIPAL],

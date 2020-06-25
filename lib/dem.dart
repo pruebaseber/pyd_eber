@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:pyd_eber/all-exports.dart';
 import 'package:path/path.dart' as p;
 
+import 'modelos/publicidades.dart';
+
 internalPrint(dynamic message) {
   // print(message);
   DEM.internalLog.add('${DateTime.now().toIso8601String()} => ${message}');
@@ -174,6 +176,16 @@ class DEM {
   static Map mapaNoticia;
   static Noticia noticia = Noticia();
   static List<Noticia> listaNoticias = List<Noticia>();
+
+  // Promociones
+//  static Map mapaPromocion;
+//  static Promocion promocion = Promocion();
+//  static List<Promocion> listaPromociones = List<Promocion>();
+
+  // Publicidades
+  static Map mapaPublicidad;
+  static Publicidad publicidad = Publicidad();
+  static List<Publicidad> listaPublicidades = List<Publicidad>();
 
   static cerrarSesionEnMemoria() {
     // Delfin Control
