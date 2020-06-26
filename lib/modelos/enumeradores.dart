@@ -1,118 +1,64 @@
+
 /*
- Proyecto: Eventos de Orientación Empresarial
- Version: 0.0.7
- Autor: Alse Desarrollos
- Unidad: Enumeradores
- Todos los Enumeradores utilizados en los modelos del proyecto
+ Tipo de Usuario
+ Interno = Colectores, Despachadores, Administradores y Supersuario
+ Externo = Clientes
 */
 
-import 'package:flutter/foundation.dart';
+import '../all-exports.dart';
 
-/*
- Nivel de Autorización
- Nivel de Autorización de un Registro
-*/
-enum NivelAutorizacion {NoVerificado, Cliente, Colector, Despachador, Administrador, Senior}
+enum TipoUsuario {Interno, Externo}
 
-String nivelAutorizacion2String(e) {
-  String s = describeEnum(e);
-//  if (s == 'Lider') {
-//    s = 'Líder';
-//  }
-  return s;
-}
-
-NivelAutorizacion string2NivelAutorizacion(String s) {
-//  if (s == 'Líder') {
-//    s = 'Lider';
-//  }
-  NivelAutorizacion e = NivelAutorizacion.values.firstWhere((v) => describeEnum(v) == s);
-  return e;
-}
-
-List<String> nivelAutorizacion2List() {
-  List<String> lista = List<String>();
-  NivelAutorizacion.values.forEach((n) {
-    lista.add(describeEnum(n));
-  });
-  return lista;
-}
-
-Map<String, NivelAutorizacion> nivelAutorizacion2Map() {
-  Map<String, NivelAutorizacion> mapa = Map<String, NivelAutorizacion>();
-  NivelAutorizacion.values.forEach((n) {
-    mapa.putIfAbsent(describeEnum(n), () => n);
-  });
-  return mapa;
-}
-
-//------------------------------------------------------------------------------
-/*
- Invitados
- Invitados de un Registro
-*/
-enum Invitados {Publico, Grupo, Invitacion, Niveles} //
-/*
-Existen 4 tipos de Eventos:
-Público:
-  Aquellos eventos a los que puede asistir cualquier persona, abierto a todos los Empresarios sin importar su nivel.
-  El cupo debe ser limitado a cierto número de personas.
-  Se podría solicitar la confirmación de asistencia.
-  Puede ser gratuito o pago.
-Grupo:
-  Sólo pueden verlo los Empresarios que estén en el Grupo que administra el Empresario-Líder que ha creado el Evento.
-  Pueden asistir todos los Empresarios que pertenezcan al Grupo.
-  Se podría solicitar la confirmación de asistencia.
-  El cupo debe ser limitado a cierto número de personas.
-  Puede ser gratuito o pago.
-Invitación:
-  Sólo verán este tipo de Eventos los Empresarios que han sido Invitados directamente por el Empresario-Líder que ha creado el Evento.
-  Se debe solicitar la confirmación de asistencia.
-  El cupo debe ser limitado a cierto número de personas.
-  Puede ser gratuito o pago.
-Nivel:
-  Sólo verán este tipo de Eventos los Empresarios que estén en el o los niveles que el Empresario-Líder que ha creado el Evento haya definido.
-  Se debe solicitar la confirmación de asistencia.
-  El cupo debe ser limitado a cierto número de personas.
-  Puede ser gratuito o pago.
- */
-String invitados2String(e) {
+String tipoUsuario2String(e) {
   return describeEnum(e);
 }
 
-Invitados string2Invitados(String s) {
-  Invitados e = Invitados.values.firstWhere((v) => describeEnum(v) == s);
+TipoUsuario string2TipoUsuario(String s) {
+  if ((s == null) | (s == '')) return TipoUsuario.Externo;
+  s = s.replaceAll(' ', '');
+  TipoUsuario e = TipoUsuario.values.firstWhere((v) => describeEnum(v) == s);
   return e;
 }
 
-List<String> invitados2List() {
+List<String> tipoUsuario2List() {
   List<String> lista = List<String>();
-  Invitados.values.forEach((n) {
+  TipoUsuario.values.forEach((n) {
     lista.add(describeEnum(n));
   });
   return lista;
 }
 
-Map<String, Invitados> invitados2Map() {
-  Map<String, Invitados> mapa = Map<String, Invitados>();
-  Invitados.values.forEach((n) {
-    mapa.putIfAbsent(describeEnum(n), () => n);
+Map<String, TipoUsuario> tipoUsuario2Map() {
+  Map<String, TipoUsuario> mapa = Map<String, TipoUsuario>();
+  TipoUsuario.values.forEach((n) {
+    mapa.putIfAbsent(tipoUsuario2String(n), () => n);
   });
   return mapa;
 }
 
 //------------------------------------------------------------------------------
 /*
- Nivel de Usuario Eventos
+ Nivel de Usuario Pedidos y Domicilios
  Niveles de Usuarios de un Registro
 */
-enum NivelUsuario {NoVerificado, Cliente, Colector, Despachador, Administrador, SuperUsuario}
+enum NivelUsuario {
+  Cliente,
+  Colector,
+  Despachador,
+  Promociones,
+  Administrador,
+  SuperUsuario,
+}
 
 String nivelUsuario2String(e) {
-  return describeEnum(e);
+  String retorno = describeEnum(e);
+  retorno = retorno.split(new RegExp(r"(?<=[a-z])(?=[A-Z])")).join(' ');
+  return retorno;
 }
 
 NivelUsuario string2NivelUsuario(String s) {
+  if ((s == null) | (s == '')) return NivelUsuario.Cliente;
+  s = s.replaceAll(' ', '');
   NivelUsuario e = NivelUsuario.values.firstWhere((v) => describeEnum(v) == s);
   return e;
 }
@@ -120,7 +66,7 @@ NivelUsuario string2NivelUsuario(String s) {
 List<String> nivelUsuario2List() {
   List<String> lista = List<String>();
   NivelUsuario.values.forEach((n) {
-    lista.add(describeEnum(n));
+    lista.add(nivelUsuario2String(n));
   });
   return lista;
 }
@@ -128,40 +74,92 @@ List<String> nivelUsuario2List() {
 Map<String, NivelUsuario> nivelUsuario2Map() {
   Map<String, NivelUsuario> mapa = Map<String, NivelUsuario>();
   NivelUsuario.values.forEach((n) {
-    mapa.putIfAbsent(describeEnum(n), () => n);
+    mapa.putIfAbsent(nivelUsuario2String(n), () => n);
   });
   return mapa;
 }
 
 //------------------------------------------------------------------------------
-
-enum TipIdentificacion {CedulaCiudadania, CedulaExtranjeria, Pasaporte, TarjetaIdentidad, CedulaVenezolana, PermisoEspecialPermanencia, RegistroCivil}
-
-String tipIdentificacion2String(e) {
-  String retorno = describeEnum(e);
-  retorno = retorno.split(new RegExp(r"(?<=[a-z])(?=[A-Z])")).join(' ');
-  return describeEnum(e);
+/*
+ Estados de Pedidos y Domicilios
+*/
+enum EstadoPedido {
+  Abierto,
+  Pendiente,
+  Preparando,
+  Facturando,
+  EnDomicilio,
+  Entregado,
+  CanceladoPorCliente,
+  CanceladoPorTienda,
 }
 
+String estadoPedido2String(e) {
+  String retorno = describeEnum(e);
+  retorno = retorno.split(new RegExp(r"(?<=[a-z])(?=[A-Z])")).join(' ');
+  return retorno;
+}
 
-TipIdentificacion string2TipIdentificacion(String s) {
+EstadoPedido string2EstadoPedido(String s) {
+  if ((s == null) | (s == '')) return EstadoPedido.Abierto;
   s = s.replaceAll(' ', '');
-  TipIdentificacion e = TipIdentificacion.values.firstWhere((v) => describeEnum(v) == s);
+  EstadoPedido e = EstadoPedido.values.firstWhere((v) => describeEnum(v) == s);
   return e;
 }
 
-List<String> tipIdentificacion2List() {
+List<String> estadoPedido2List() {
   List<String> lista = List<String>();
-  TipIdentificacion.values.forEach((n) {
-    lista.add(describeEnum(n));
+  EstadoPedido.values.forEach((n) {
+    lista.add(estadoPedido2String(n));
   });
   return lista;
 }
 
-Map<String, TipIdentificacion> tipIdentificacion2Map() {
-  Map<String, TipIdentificacion> mapa = Map<String, TipIdentificacion>();
-  TipIdentificacion.values.forEach((n) {
-    mapa.putIfAbsent(describeEnum(n), () => n);
+Map<String, EstadoPedido> estadoPedido2Map() {
+  Map<String, EstadoPedido> mapa = Map<String, EstadoPedido>();
+  EstadoPedido.values.forEach((n) {
+    mapa.putIfAbsent(estadoPedido2String(n), () => n);
   });
   return mapa;
 }
+
+//------------------------------------------------------------------------------
+/*
+ Repetir Publicidad y Promociones
+*/
+enum RepetirPromocion {
+  IntervaloDias,
+  CadaDiaDeLaSemana,
+  CadaDiaDelMes,
+}
+
+String repetirPromocion2String(e) {
+  String retorno = describeEnum(e);
+  retorno = retorno.split(new RegExp(r"(?<=[a-z])(?=[A-Z])")).join(' ');
+  return retorno;
+}
+
+RepetirPromocion string2RepetirPromocion(String s) {
+  if ((s == null) | (s == '')) return RepetirPromocion.IntervaloDias;
+  s = s.replaceAll(' ', '');
+  RepetirPromocion e = RepetirPromocion.values.firstWhere((v) => describeEnum(v) == s);
+  return e;
+}
+
+List<String> repetirPromocion2List() {
+  List<String> lista = List<String>();
+  RepetirPromocion.values.forEach((n) {
+    lista.add(repetirPromocion2String(n));
+  });
+  return lista;
+}
+
+Map<String, RepetirPromocion> repetirPromocion2Map() {
+  Map<String, RepetirPromocion> mapa = Map<String, RepetirPromocion>();
+  RepetirPromocion.values.forEach((n) {
+    mapa.putIfAbsent(repetirPromocion2String(n), () => n);
+  });
+  return mapa;
+}
+
+//------------------------------------------------------------------------------

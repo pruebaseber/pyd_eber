@@ -10,21 +10,23 @@ import 'package:pyd_eber/all-exports.dart';
 import 'package:pyd_eber/data_web_mobile/firebase.dart'
 if (dart.library.html) 'package:firebase/firebase.dart' as fb_web;
 
+import 'enumeradores.dart';
+//import 'package:firebase/firebase.dart' as fb_web;
 
 class Publicidad {
   Publicidad({
     this.key = '',
-    this.nombreEmpresaquepagaPublicidad,
-    this.sitioweb,
-    this.nombreinterno,
+    this.nombreEmpresaquepagaPublicidad = '',
+    this.sitioweb = '',
+    this.nombreinterno = '',
     this.fechaActivacion,
     this.fechaDesactivacion,
-    this.repetir,
-    this.repetircada,
-    this.imagen,
-    this.producto,
-    this.nivelPrioridad,
-    this.nota,
+    this.repetir = RepetirPromocion.IntervaloDias,
+    this.repetircada = 1,
+    this.imagen = '',
+    this.producto = '',
+    this.nivelPrioridad = 1,
+    this.nota = '',
   });
 
   String key = '';  // Incluido por usar Firebase Database, pero no en Dendrita
@@ -33,7 +35,7 @@ class Publicidad {
   String nombreinterno;  // Denominación 200 No Nulo [Texto Variable: String]
   DateTime fechaActivacion;  // Fecha [Fecha: DateTime]
   DateTime fechaDesactivacion;  // Fecha [Fecha: DateTime]
-  String repetir;  // Repetir [Texto Variable: String]
+  RepetirPromocion repetir;  // Repetir [Texto Variable: String]
   int repetircada;  // Entero Pequeño [Entero Pequeño: int]
   String imagen;  // URI Imagen [Texto Variable: String]
   String producto;  // Id/Key [Texto Variable: String]
@@ -51,7 +53,7 @@ class Publicidad {
     this.nombreinterno = value[PUBLICIDADES.NOMBREINTERNO];
     this.fechaActivacion = LeerFecha(value[PUBLICIDADES.FECHAACTIVACION]);
     this.fechaDesactivacion = LeerFecha(value[PUBLICIDADES.FECHADESACTIVACION]);
-    this.repetir = value[PUBLICIDADES.REPETIR];
+    this.repetir = string2RepetirPromocion(value[PUBLICIDADES.REPETIR]);
     this.repetircada = value[PUBLICIDADES.REPETIRCADA];
     this.imagen = value[PUBLICIDADES.IMAGEN];
     this.producto = value[PUBLICIDADES.PRODUCTO];
@@ -59,7 +61,7 @@ class Publicidad {
     this.nota = value[PUBLICIDADES.NOTA];
   }
 
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'key': this.key, // Incluido por usar Firebase Database, pero no en Dendrita
       PUBLICIDADES.NOMBREEMPRESAQUEPAGAPUBLICIDAD: this.nombreEmpresaquepagaPublicidad,
@@ -67,7 +69,7 @@ class Publicidad {
       PUBLICIDADES.NOMBREINTERNO: this.nombreinterno,
       PUBLICIDADES.FECHAACTIVACION: this.fechaActivacion == null ? null : GuardarFecha(this.fechaActivacion),
       PUBLICIDADES.FECHADESACTIVACION: this.fechaDesactivacion == null ? null : GuardarFecha(this.fechaDesactivacion),
-      PUBLICIDADES.REPETIR: this.repetir,
+      PUBLICIDADES.REPETIR: repetirPromocion2String(this.repetir),
       PUBLICIDADES.REPETIRCADA: this.repetircada,
       PUBLICIDADES.IMAGEN: this.imagen,
       PUBLICIDADES.PRODUCTO: this.producto,
@@ -77,7 +79,6 @@ class Publicidad {
   }
 
   assign(Publicidad publicidad) {
-
     if (publicidad == null) {
       this.key = '';  // Incluido por usar Firebase Database, pero no en Dendrita
       this.nombreEmpresaquepagaPublicidad = null; //"";
@@ -115,7 +116,7 @@ class Publicidad {
       PUBLICIDADES.NOMBREINTERNO: this.nombreinterno,
       PUBLICIDADES.FECHAACTIVACION: this.fechaActivacion == null ? null : GuardarFecha(this.fechaActivacion),
       PUBLICIDADES.FECHADESACTIVACION: this.fechaDesactivacion == null ? null : GuardarFecha(this.fechaDesactivacion),
-      PUBLICIDADES.REPETIR: this.repetir,
+      PUBLICIDADES.REPETIR: repetirPromocion2String(this.repetir),
       PUBLICIDADES.REPETIRCADA: this.repetircada,
       PUBLICIDADES.IMAGEN: this.imagen,
       PUBLICIDADES.PRODUCTO: this.producto,
@@ -136,7 +137,7 @@ class Publicidad {
     this.nombreinterno = map[PUBLICIDADES.NOMBREINTERNO];
     this.fechaActivacion = map[PUBLICIDADES.FECHAACTIVACION] == null ? null : LeerFecha(map[PUBLICIDADES.FECHAACTIVACION]);
     this.fechaDesactivacion = map[PUBLICIDADES.FECHADESACTIVACION] == null ? null : LeerFecha(map[PUBLICIDADES.FECHADESACTIVACION]);
-    this.repetir = map[PUBLICIDADES.REPETIR];
+    this.repetir = string2RepetirPromocion(map[PUBLICIDADES.REPETIR]);
     this.repetircada = map[PUBLICIDADES.REPETIRCADA];
     this.imagen = map[PUBLICIDADES.IMAGEN];
     this.producto = map[PUBLICIDADES.PRODUCTO];
@@ -211,19 +212,19 @@ class PUBLICIDADES {
 
   // Nombre de los Atributos (Campos) reales en la Base de Datos
   static const String KEY = 'key'; // Incluido por usar Firebase Database, pero no en Dendrita
-  static const String NOMBREEMPRESAQUEPAGAPUBLICIDAD = 'nombreEmpresaquepagaPublicidad';
-  static const String SITIOWEB = 'sitioweb';
-  static const String NOMBREINTERNO = 'nombreinterno';
-  static const String FECHAACTIVACION = 'fechaActivacion';
-  static const String FECHADESACTIVACION = 'fechaDesactivacion';
-  static const String REPETIR = 'repetir';
-  static const String REPETIRCADA = 'repetircada';
-  static const String IMAGEN = 'imagen';
-  static const String PRODUCTO = 'producto';
-  static const String NIVELPRIORIDAD = 'nivelPrioridad';
-  static const String NOTA = 'nota';
+  static const String NOMBREEMPRESAQUEPAGAPUBLICIDAD = 'NombreEmpresaquepagaPublicidad';
+  static const String SITIOWEB = 'SitioWeb';
+  static const String NOMBREINTERNO = 'NombreInterno';
+  static const String FECHAACTIVACION = 'FechaActivacion';
+  static const String FECHADESACTIVACION = 'FechaDesactivacion';
+  static const String REPETIR = 'Repetir';
+  static const String REPETIRCADA = 'RepetirCada';
+  static const String IMAGEN = 'Imagen';
+  static const String PRODUCTO = 'Producto';
+  static const String NIVELPRIORIDAD = 'NivelPrioridad';
+  static const String NOTA = 'Nota';
 
-  // Para la conexión con el API Publicidades/lista_Publicidades/det_Publicidades/
+  // Para la conexión con el API
   static const String ENDPOINT = ENTIDAD+'/';
   static const String ENDPOINTLISTA = 'lista_'+ENTIDAD+'/';
   static const String ENDPOINTDET = 'det_'+ENTIDAD+'/';
@@ -254,53 +255,65 @@ class PublicidadesFB {
   }
 
   static Future guardarPublicidad({Publicidad publicidad}) async {
-    final _analytics = FirebaseAnalytics();
+//    final _analytics = FirebaseAnalytics();
+//    String logName = PUBLICIDADES.ENTIDAD;
+//    Map<String, dynamic> logParameters;
 
     if (publicidad.key == '') {
-      publicidad.key = drPublicidades.push().key;
+//      logName = logName+'_Nuevo';
+      if (kIsWeb) {
+        publicidad.key = drPublicidadesWeb.push().key;
+      } else {
+        publicidad.key = drPublicidades.push().key;
+      }
+    } else {
+//      logName = logName+'_Modificado';
     }
-    await drPublicidades.child(publicidad.key).update(publicidad.toJson());
-    //_analytics.logEvent(name:  PUBLICIDADES.ENTIDAD , parameters: publicidad.toJson());
-    _analytics.logEvent(name:  PUBLICIDADES.ENTIDAD , parameters: {'Nueva': 'Publicidad'});
+    if (kIsWeb) {
+      await drPublicidadesWeb.child(publicidad.key).update(publicidad.toJson());
+    } else {
+      await drPublicidades.child(publicidad.key).update(publicidad.toJson());
+    }
+//    logParameters = publicidad.toJson();
+//    _analytics.logEvent(name: logName, parameters: logParameters);
+//    print('Sin ERROR _analytics.logEvent(name: logName, parameters: logParameters);');
   }
 
   static Future borrarPublicidad({Publicidad publicidad}) async {
     final _analytics = FirebaseAnalytics();
-    await drPublicidades.child(publicidad.key).remove();
-    //_analytics.logEvent(name:  PUBLICIDADES.ENTIDAD + '_Borrado', parameters: publicidad.toJson());
-    _analytics.logEvent(name:  PUBLICIDADES.ENTIDAD + '_Borrado', parameters: {'Borrada': 'Publicidad'});
-  }
 
-  static init() async {
-    await drPublicidades.remove();
-    await InicializarPublicidades();
-  }
-
-  static InicializarPublicidades() async {
-    Publicidad publicidad = Publicidad();
-    publicidad.nombreinterno = 'Publicidad prueba 1';
-    publicidad.nombreEmpresaquepagaPublicidad = 'PyD 1';
-    PublicidadesFB.guardarPublicidad(publicidad: publicidad);
-
-    publicidad = Publicidad();
-    publicidad.nombreinterno = 'Publicidad prueba 2';
-    publicidad.nombreEmpresaquepagaPublicidad = 'PyD 2';
-    PublicidadesFB.guardarPublicidad(publicidad: publicidad);
+    if (kIsWeb) {
+      await drPublicidadesWeb.child(publicidad.key).remove();
+    } else {
+      await drPublicidades.child(publicidad.key).remove();
+    }
+    _analytics.logEvent(name:  PUBLICIDADES.ENTIDAD + '_Borrado', parameters: publicidad.toMap());
   }
 
   static todos(List<Publicidad> lista) async {
     // Lista de Publicidades
     lista.clear();
-    drPublicidades.onValue.listen((event) {
-      if ((event != null) && (event.snapshot != null) && (event.snapshot.value != null)) {
-        Map<dynamic, dynamic> _lista = event.snapshot.value;
-        _lista.forEach((key, value) {
+    onValue().listen((event) {
+      List _lista = dataWebMobile(event);
+      if (_lista != null) {
+        _lista.forEach((element) {
           final registro = Publicidad();
-          registro.fromKeyValue(key, value);
+          registro.fromMap(element);
           lista.add(registro);
         });
-        lista.sort((a,b) => a.key.compareTo(b.key));
+        lista.sort((a,b) => a.nivelPrioridad.compareTo(b.nivelPrioridad));
       }
+//      dataWebMobile()
+//      drPublicidades.onValue.listen((event) {
+//      if ((event != null) && (event.snapshot != null) && (event.snapshot.value != null)) {
+//        Map<dynamic, dynamic> _lista = event.snapshot.value;
+//        _lista.forEach((key, value) {
+//          final registro = Publicidad();
+//          registro.fromKeyValue(key, value);
+//          lista.add(registro);
+//        });
+//        lista.sort((a,b) => a.key.compareTo(b.key));
+//      }
     });
   }
 }

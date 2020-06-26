@@ -6,6 +6,16 @@ class DatabaseReference {
   val() {
     return null;
   }
+  push() {
+    return APush();
+  }
+  child(String path) {
+
+  }
+}
+
+class APush {
+  String key;
 }
 
 class FakeFirebase {
