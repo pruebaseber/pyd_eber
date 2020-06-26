@@ -36,6 +36,8 @@ class Navegacion {
         return FadePage(UIPedido());
       case UIPublicidades.ruta:
         return FadePage(UIPublicidades());
+      case UIEditorImagenes.ruta:
+        return FadePage(UIEditorImagenes());
       case UIMisDatos.ruta:
         return FadePage(UIMisDatos(registro: Cliente(
             numeroIdent: '11711897',

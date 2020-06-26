@@ -37,6 +37,10 @@ dependencies:
   image_picker: ^0.6.7+1
   shadow_text: ^0.0.2
 
+  # Agregados y usados por Léyder
+  image_cropper: ^1.0.2
+
+
   # BLoC pattern
   bloc: ^4.0.0
   flutter_bloc: ^4.0.0

@@ -47,3 +47,4 @@ export 'ui_selector_imagenes_productos.dart';
 export 'ui_selector_imagenes_mediospago.dart';
 
 export 'ui_mis_datos.dart';
+export 'ui_editor_imagenes.dart';

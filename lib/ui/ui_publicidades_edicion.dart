@@ -257,15 +257,11 @@ class _EstadoPublicidadesEdicion extends State<UIPublicidadesEdicion> {
         backgroundColor: AppRes.appResMap[Co.COLOR_PRINCIPAL],
         child: Icon(Icons.add_a_photo),
         onPressed: () {
-//          Navigator.push(context, MaterialPageRoute(
-//              builder: (BuildContext context) =>
-//                  UIPublicidadesEdicion(
-//                    registro: Publicidad(
-//
-//                    ),
-//                  )
-//          ),
-//          );
+          Navigator.push(context, MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  UIEditorImagenes()
+          ),
+          );
         },
       ),
     );
