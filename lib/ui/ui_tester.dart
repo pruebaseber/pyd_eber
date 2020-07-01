@@ -79,9 +79,9 @@ class _UITesterState extends State<UITester> {
 //                  },
 //                ),
                 UIBotonPyD(
-                  'Publicidad',
+                  'Mis Datos',
                       () {
-                    Navigator.pushNamed(context, UIPublicidades.ruta);
+                    Navigator.pushNamed(context, UIMisDatos.ruta);
                   },
                 ),
 //              UIBotonPyD(
