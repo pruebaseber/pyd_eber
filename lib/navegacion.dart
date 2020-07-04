@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pyd_eber/all-exports.dart';
+import 'package:pyd_eber/ui/ui_despachadores.dart';
 import 'package:pyd_eber/ui/ui_publicidades.dart';
 import 'ui/_ui.dart';
 
@@ -36,6 +37,9 @@ class Navegacion {
         return FadePage(UIPedido());
       case UIPublicidades.ruta:
         return FadePage(UIPublicidades());
+      case UIDespachadores.ruta:
+        return FadePage(UIDespachadores());
+
       case UIEditorImagenes.ruta:
         return FadePage(UIEditorImagenes());
       case UIMisDatos.ruta:

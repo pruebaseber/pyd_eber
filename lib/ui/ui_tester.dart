@@ -1,10 +1,8 @@
 import 'package:pyd_eber/all-exports.dart';
 import 'package:pyd_eber/ui/ui_boton_pyd.dart';
+import 'package:pyd_eber/ui/ui_despachadores.dart';
 import 'package:pyd_eber/ui/ui_modo.dart';
-import 'package:pyd_eber/ui/ui_publicidades.dart';
 
-
-import 'package:pyd_eber/all-exports.dart';
 
 class UITester extends StatefulWidget {
   @override
@@ -79,9 +77,9 @@ class _UITesterState extends State<UITester> {
 //                  },
 //                ),
                 UIBotonPyD(
-                  'Mis Datos',
+                  'Despachadores',
                       () {
-                    Navigator.pushNamed(context, UIMisDatos.ruta);
+                    Navigator.pushNamed(context, UIDespachadores.ruta);
                   },
                 ),
 //              UIBotonPyD(

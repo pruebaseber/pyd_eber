@@ -28,6 +28,7 @@ dependencies:
 
   # Dispositivos y Seguridad para Usuarios
   device_info: ^0.4.2+4
+  flutter_device_type: ^0.2.0
 
   # Agregados y usados por Eber
   theme_provider: ^0.3.3

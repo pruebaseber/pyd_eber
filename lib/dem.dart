@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:pyd_eber/all-exports.dart';
 import 'package:path/path.dart' as p;
 
+import 'modelos/despachadores.dart';
 import 'modelos/publicidades.dart';
 
 internalPrint(dynamic message) {
@@ -181,6 +182,13 @@ class DEM {
 //  static Map mapaPromocion;
 //  static Promocion promocion = Promocion();
 //  static List<Promocion> listaPromociones = List<Promocion>();
+
+  // Colectores
+  static Map mapaDespachadores;
+  static Despachadores despachadores = Despachadores();
+  static List<Despachadores> listaColectores = List<Despachadores>();
+
+
 
   // Publicidades
   static Map mapaPublicidad;

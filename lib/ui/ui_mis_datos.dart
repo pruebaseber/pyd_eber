@@ -81,6 +81,21 @@ class _EstadoClientesEdicion extends State<UIMisDatos> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             children: <Widget>[
 // Campo: Nombre Completo. Tipo de Componente: BDEdicion
+            UIContenedorCampo(
+              ancho: Responsive.anchoItemDatoGeneral,
+               child: UICampo(
+                datos: DEM.mapaCliente,
+                tabla: CLIENTES.ETIQUETA_ENTIDAD,
+                campo: CLIENTES.NOMBRECOMPLETO,
+                denominacion: CLIENTES.ETIQUETA_NOMBRECOMPLETO,
+                etiqueta: CLIENTES.ETIQUETA_NOMBRECOMPLETO,
+                componente: 'BDEdicion',
+                longitud: 80,
+                decimales: 0,
+                // ancho: DEM.modo == DEM.sm ? DEM.ancho * .8 : DEM.ancho * .5,
+              ),
+            ),
+
               UICampo(
                 datos: DEM.mapaCliente,
                 tabla: CLIENTES.ETIQUETA_ENTIDAD,
